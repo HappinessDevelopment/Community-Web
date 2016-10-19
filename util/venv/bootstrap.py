@@ -1809,9 +1809,16 @@ def create_bootstrap_script(extra_text, python_version=''):
 
 
 import subprocess
+import os
 def after_install(options, home_dir):
-  subprocess.call(['pip', 'install', 'django'])
-  subprocess.call(['pip', 'install', 'djangorestframework'])
+    if sys.platform == 'win32':
+        bin = 'Scripts'
+    else:
+        bin = 'bin'
+    # packages to bootstrap
+    pip = join(home_dir, bin, 'pip')
+    subprocess.call([pip, 'install', 'django'])
+    subprocess.call([pip, 'install', 'djangorestframework'])
 
 
 def convert(s):
