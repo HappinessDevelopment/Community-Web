@@ -5,19 +5,18 @@ import platform
 import subprocess
 
 venv_name = '.venv'
-
+pip_ver = 'pip'
 if platform.system() == 'Windows':
     os.system('python -m venv ' + venv_name)
     os.system(venv_name + '\\Scripts\\activate.bat')
     bin = 'Scripts'
 else:
-    os.system('pyvenv ' + venv_name)
-    os.system('source ' + venv_name + '/bin/activate')
+    if os.system('pyvenv ' + venv_name) != 0:
+        os.system('python3.4 -m venv ' + venv_name)
+        pip_ver = 'pip3.4'
     bin = 'bin'
 
 print('installing packages')
 
-pip_packages = ['django==1.10.2', 'djangorestframework==3.4.7']
 pip = os.path.join(os.getcwd(), venv_name, bin, 'pip')
-for package in pip_packages:
-    subprocess.call([pip, 'install', package])
+subprocess.call([pip, 'install', '-r', 'requirements.txt'])
