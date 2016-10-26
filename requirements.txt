@@ -1,2 +1,3 @@
 django==1.10.2
 djangorestframework==3.4.7
+django-stormpath
