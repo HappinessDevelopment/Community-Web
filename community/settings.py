@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
-
+from stormpath.client import Client as StormpathClient
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_stormpath',
+    'community.webapp'
 ]
 
 MIDDLEWARE = [
@@ -80,6 +82,21 @@ DATABASES = {
     }
 }
 
+# Authentication --------------------------------------
+
+AUTHENTICATION_BACKENDS = (
+    'django_stormpath.backends.StormpathBackend',
+    'django_stormpath.backends.StormpathIdSiteBackend',
+'django_stormpath.backends.StormpathSocialBackend'
+)
+
+AUTH_USER_MODEL = 'django_stormpath.StormpathUser'
+
+STORMPATH_API_KEY = os.path.join(BASE_DIR, '.stormpath', 'apiKey.properties')
+stormpathClient = StormpathClient(api_key_file=STORMPATH_API_KEY)
+STORMPATH_ID = '7D497EQD0O7OQVQDKUXHC962X'
+STORMPATH_SECRET = 'c6QEI+UbXqU6WG0d2MmSDPsPdvmsM6CVj//NLvPGTK0'
+STORMPATH_APPLICATION = 'https://api.stormpath.com/v1/applications/5uTPKngEwo8kvC1ijkH3Kf'
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
@@ -98,7 +115,7 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
+# --------------------------------------------------------
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
