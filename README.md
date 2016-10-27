@@ -1,9 +1,12 @@
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
-# Community
+Community
+=======================
+
+Community is a social platform to connect with like-minded community members and to bring together a community of individuals.
+
 
 ## Web App
-
 Repository for the Community web application.
 
 ### Dependencies
