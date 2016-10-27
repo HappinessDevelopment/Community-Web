@@ -1,0 +1,4 @@
+-r base.txt
+psycopg2
+
+# Anything else for production environment
