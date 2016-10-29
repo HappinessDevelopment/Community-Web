@@ -37,8 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_stormpath',
-    'community.webapp'
+    #'django_stormpath',
+    'rest_framework',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -56,7 +57,7 @@ ROOT_URLCONF = 'community.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'community', 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -71,6 +72,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'community.wsgi.application'
 
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),
+    'PAGE_SIZE': 10
+}
 
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
@@ -83,20 +88,20 @@ DATABASES = {
 }
 
 # Authentication --------------------------------------
-
-AUTHENTICATION_BACKENDS = (
-    'django_stormpath.backends.StormpathBackend',
-    'django_stormpath.backends.StormpathIdSiteBackend',
-'django_stormpath.backends.StormpathSocialBackend'
-)
-
-AUTH_USER_MODEL = 'django_stormpath.StormpathUser'
-
-STORMPATH_API_KEY = os.path.join(BASE_DIR, '.stormpath', 'apiKey.properties')
-stormpathClient = StormpathClient(api_key_file=STORMPATH_API_KEY)
-STORMPATH_ID = '7D497EQD0O7OQVQDKUXHC962X'
-STORMPATH_SECRET = 'c6QEI+UbXqU6WG0d2MmSDPsPdvmsM6CVj//NLvPGTK0'
-STORMPATH_APPLICATION = 'https://api.stormpath.com/v1/applications/5uTPKngEwo8kvC1ijkH3Kf'
+LOGIN_URL = '/auth/login'
+# AUTHENTICATION_BACKENDS = (
+#     'django_stormpath.backends.StormpathBackend',
+#     'django_stormpath.backends.StormpathIdSiteBackend',
+#     'django_stormpath.backends.StormpathSocialBackend'
+# )
+#
+# AUTH_USER_MODEL = 'django_stormpath.StormpathUser'
+#
+# STORMPATH_API_KEY = os.path.join(BASE_DIR, '.stormpath', 'apiKey.properties')
+# stormpathClient = StormpathClient(api_key_file=STORMPATH_API_KEY)
+# STORMPATH_ID = '7D497EQD0O7OQVQDKUXHC962X'
+# STORMPATH_SECRET = 'c6QEI+UbXqU6WG0d2MmSDPsPdvmsM6CVj//NLvPGTK0'
+# STORMPATH_APPLICATION = 'https://api.stormpath.com/v1/applications/5uTPKngEwo8kvC1ijkH3Kf'
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
