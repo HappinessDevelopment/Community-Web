@@ -3,3 +3,5 @@
 .idea
 *.sqlite3
 __pycache__
+cert.crt
+cert.key
