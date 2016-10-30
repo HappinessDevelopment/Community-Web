@@ -5,10 +5,6 @@ Community
 
 Community is a social platform to connect with like-minded community members and to bring together a community of individuals.
 
-
-## Web App
-Repository for the Community web application.
-
 ### Dependencies
 * Python 3
 * Django
