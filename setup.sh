@@ -18,7 +18,5 @@ easy_install pip
 # install from requirements.txt (currently only django and djangorestframework)
 echo "Installing requirements..."
 pip install -r requirements.txt
-
-echo "Deactivated"
-deactivate 
+ 
 
