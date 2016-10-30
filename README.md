@@ -26,4 +26,5 @@ NOTE: For mac users, ignore the command `python bootstrap_venv.py` and run the s
 ### Running the server locally
 1. Activate .venv virtual environment
 2. Execute in project root: `python manage.py runserver`
+  - if you are using django-extensions run `python manage.py runserver_plus --cert cert` in order to run over https
 3. Navigate to localhost:8000
