@@ -1,6 +1,3 @@
-# Community-Web
-Repository for the Community Campus App for the back-end web development.
-
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
 Community
