@@ -12,7 +12,7 @@ def index(request):
 
 
 def register(request):
-    return render(request, 'auth/register.html')
+    return render(request, 'authentication/register.html')
 
 
 def list_groups(request):
